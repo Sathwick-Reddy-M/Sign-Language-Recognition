@@ -3,6 +3,8 @@ The model developed can classify any letter in the American Sign Language (ASL) 
 
 Using this model we can convert the ASL into the respective english sentences quite easily.
 
+The deployed version of the model can be view [here](https://sathwick-reddy-m-sign-language-to-text-web-app-6j4rww.streamlitapp.com/)
+
 ## Model Characterstics
 ### Input
 A gray scale ASL letter image of shape (28X28)

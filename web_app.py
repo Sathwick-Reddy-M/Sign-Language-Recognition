@@ -32,7 +32,9 @@ def get_label_binarizer():
 def preprocess_image(image, image_file, best_model, label_binarizer):
     # image: numpy array
 
-    image_width = image.shape[0]
+    # To display the uploaded image
+    # image_width = image.shape[0]
+    # st.image(image_file, caption='Uploaded Image', width=max(image_width, 100))
 
     image = tf.reshape(image, [image.shape[0], image.shape[1], 1])
     image = image/255
@@ -46,17 +48,29 @@ def preprocess_image(image, image_file, best_model, label_binarizer):
     index_to_letter_map = {i:chr(ord('a') + i) for i in range(26)}
     letter = index_to_letter_map[label_binarizer.inverse_transform(prediction)[0]]
 
-    st.image(image_file, caption='Uploaded Image', width=max(image_width, 100))
-    st.write(f'The image is predicted as {letter}')
+    return letter
 
 best_model = get_best_model()
 label_binarizer = get_label_binarizer()
+
+st.markdown('You can find the Convolutional Neural Netowrk used [here](https://github.com/Sathwick-Reddy-M/sign-language-to-text)')
 
 image_file = st.file_uploader('Choose the ASL Image', ['jpg', 'png'])
 
 if image_file is not None:
     image = Image.open(image_file).convert('L')
     image = np.array(image, dtype='float32')
-    preprocess_image(image, image_file, best_model, label_binarizer)
+    letter = preprocess_image(image, image_file, best_model, label_binarizer)
+    st.write(f'The image is predicted as {letter}')
 
-index_to_letter_map = {i:chr(ord('a') + i) for i in range(26)}
+st.write('Convert ASL sentence to text')
+sentence_image_files = st.file_uploader('Select the ASL Images', ['jpg', 'png'], accept_multiple_files = True)
+
+if len(sentence_image_files) > 0:
+    sentence = ''
+    for image_file in sentence_image_files:
+        image = Image.open(image_file).convert('L')
+        image = np.array(image, dtype='float32')
+        letter = preprocess_image(image, image_file, best_model, label_binarizer)
+        sentence += letter
+    st.write(f'The sentence is predicted as {sentence}')
