@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt
 from sklearn.preprocessing import LabelBinarizer
 from tensorflow import keras
 from PIL import Image
@@ -7,6 +6,15 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import tensorflow as tf
+
+st.set_page_config(page_title='ASL to Text')
+st.title('Sign Language to Text')
+st.markdown(""" 
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style> 
+    """, unsafe_allow_html=True)
 
 @st.cache(allow_output_mutation=True)
 def get_best_model():
@@ -50,11 +58,5 @@ if image_file is not None:
     image = Image.open(image_file).convert('L')
     image = np.array(image, dtype='float32')
     preprocess_image(image, image_file, best_model, label_binarizer)
-
-test_df = pd.read_csv('data/alphabet/sign_mnist_test.csv')
-X_test, y_test = test_df.drop('label', axis=1), test_df['label']
-
-for i in range(10):
-    plt.imsave(f'test-images/{i+1}.jpg', np.array(X_test.iloc[i]).reshape(28, 28))
 
 index_to_letter_map = {i:chr(ord('a') + i) for i in range(26)}
