@@ -1,19 +1,19 @@
 # Sign Language to Text
-The model developed can classify any letter in the American Sign Language (ASL) alphabet into the equivalent letter in the English Alphabet which is a muitlclass classification problem.
+The model developed can classify any letter in the American Sign Language (ASL) alphabet into the equivalent letter in the English Alphabet, which is a multiclass classification problem.
 
-Using this model we can convert the ASL into the respective english sentences quite easily.
+Using this model, we can easily convert the ASL into the respective English sentences.
 
-The deployed version of the model can be view [here](https://sathwick-reddy-m-sign-language-to-text-web-app-6j4rww.streamlitapp.com/)
+You can view the deployed version of the model [here](https://sathwick-reddy-m-sign-language-to-text-web-app-6j4rww.streamlitapp.com/)
 
 ## Model Characterstics
 ### Input
-A gray scale ASL letter image of shape (28X28)
+A grayscale ASL letter image of shape (28X28)
 ### Output 
 Equivalent letter in the English alphabet corresponding to the ASL input image
 
-**Note**: It cannot covert the letters J and Z as there corresponding representation in ASL requires motion.
+**Note**: The letters J and Z cannot be predicted as their corresponding representation in ASL requires motion.
 ### Evaluation
-The model is evaluated on the accuracy
+Accuracy is used as the evaluation metric
 ### Architecture
 ![CNN](./model.png)
 
@@ -29,16 +29,19 @@ The model is evaluated on the accuracy
 ## Best Model After Hyperparameter Tuning
 `models/experiment-dropout-0`
 
-Tuned Hyperparmeter include
-1. Number of Convolution and Max Pooling Pairs
-2. Number of feature maps in the convolution layers
-3. Filter Shape
+Tuned Hyperparmeters include
+1. Convolution and Max Pooling Pairs
+2. Filters in the convolution layers
+3. Filter Size
 4. Dropout
 
 
-Techniques that can be explored include
+Hyperparameters that can be further considered
 
-1. Data Augmentation
-2. Batch Normalization
-3. Number of units in the dense layer
-4. Replacing the Max Pooling layer with a convolution layer having stride > 1
+1. Batch Normalization - It normalizes the layer inputs
+2. Deeper networks work well - Replacing the single convolution layer of filter size (5X5) with two successive consecutive convolution layers of filter size (3X3)
+3. Number of units in the dense layer and number of dense layers
+4. Replacing the MaxPooling Layer with a convolution layer having a stride > 1
+5. Optimizers
+6. Learning rate of the optimizer
+7. Data Augmentation

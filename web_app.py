@@ -54,7 +54,9 @@ best_model = get_best_model()
 label_binarizer = get_label_binarizer()
 
 st.markdown('You can find the Convolutional Neural Netowrk used [here](https://github.com/Sathwick-Reddy-M/sign-language-to-text)')
+st.markdown('Use 28x28 images (size of the training images) to obtain the accurate results')
 
+st.subheader('Convert Image to English letter')
 image_file = st.file_uploader('Choose the ASL Image', ['jpg', 'png'])
 
 if image_file is not None:
@@ -63,7 +65,7 @@ if image_file is not None:
     letter = preprocess_image(image, image_file, best_model, label_binarizer)
     st.write(f'The image is predicted as {letter}')
 
-st.write('Convert ASL sentence to text')
+st.subheader('Convert images to English sentence')
 sentence_image_files = st.file_uploader('Select the ASL Images', ['jpg', 'png'], accept_multiple_files = True)
 
 if len(sentence_image_files) > 0:
