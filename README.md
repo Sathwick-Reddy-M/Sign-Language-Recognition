@@ -5,6 +5,8 @@ Using this model, we can easily convert the ASL into the respective English sent
 
 You can view the deployed version of the model [here](https://sathwick-reddy-m-sign-language-to-text-web-app-6j4rww.streamlitapp.com/)
 
+For a detailed explaination please refer [this](https://towardsdatascience.com/sign-language-to-text-using-deep-learning-7f9c8018c593) article
+
 ## Model Characterstics
 ### Input
 A grayscale ASL letter image of shape (28X28)

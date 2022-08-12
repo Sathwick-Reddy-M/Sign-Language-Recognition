@@ -54,6 +54,7 @@ best_model = get_best_model()
 label_binarizer = get_label_binarizer()
 
 st.markdown('You can find the Convolutional Neural Netowrk used [here](https://github.com/Sathwick-Reddy-M/sign-language-to-text)')
+st.markdown('For a detailed explaination please refer [this](https://towardsdatascience.com/sign-language-to-text-using-deep-learning-7f9c8018c593) article')
 st.markdown('Use 28x28 images (size of the training images) to obtain the accurate results')
 
 st.subheader('Convert Image to English letter')
