@@ -7,8 +7,8 @@ import pandas as pd
 import streamlit as st
 import tensorflow as tf
 
-st.set_page_config(page_title='ASL to Text')
-st.title('Sign Language to Text')
+st.set_page_config(page_title='ASL Recognition')
+st.title('Sign Language Recognition')
 st.markdown(""" 
     <style>
     #MainMenu {visibility: hidden;}
@@ -53,7 +53,7 @@ def preprocess_image(image, image_file, best_model, label_binarizer):
 best_model = get_best_model()
 label_binarizer = get_label_binarizer()
 
-st.markdown('You can find the Convolutional Neural Netowrk used [here](https://github.com/Sathwick-Reddy-M/sign-language-to-text)')
+st.markdown('You can find the Convolutional Neural Netowrk used [here](https://github.com/Sathwick-Reddy-M/Sign-Language-Recognition)')
 st.markdown('For a detailed explaination please refer [this](https://towardsdatascience.com/sign-language-to-text-using-deep-learning-7f9c8018c593) article')
 st.markdown('Use 28x28 images (size of the training images) to obtain the accurate results')
 
