@@ -1,4 +1,4 @@
-# Sign Language to Text
+# Sign Language Recognition
 The model developed can classify any letter in the American Sign Language (ASL) alphabet into the equivalent letter in the English Alphabet, which is a multiclass classification problem.
 
 Using this model, we can easily convert the ASL into the respective English sentences.
